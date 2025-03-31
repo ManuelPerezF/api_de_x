@@ -1,16 +1,12 @@
-import tweetsRoutes from './src/routes/tweets';
-import userRoutes from './src/routes/user';
+import express from 'express';
+import tweetsRoutes from './src/routes/tweets'
+import userRoutes from './src/routes/user'
 
-const express = require('express');
 const app = express();
+app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.json({message: 'Hello World!'});
-});
+app.use('/api/tweet', tweetsRoutes);
+app.use('/api/user', userRoutes);
 
-app.use('/api/tweets', tweetsRoutes);
-app.use('api/users', userRoutes);
-
-app.listen(7000, () => {
-    console.log('Server running on port 7000');
-});
+const PORT = process.env.PORT || 7000;
+app.listen(PORT, () => console.log('Server running'))
