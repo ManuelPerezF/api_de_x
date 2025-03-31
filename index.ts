@@ -1,5 +1,5 @@
 import tweetsRoutes from './src/routes/tweets';
-import userRoutes from './src/routes/users';
+import userRoutes from './src/routes/user';
 
 const express = require('express');
 const app = express();
